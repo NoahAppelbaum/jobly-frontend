@@ -1,17 +1,21 @@
 /** JobCard: displays Job information
  *
  * props:
- * - JobData: { id, title, salary, equity, companyHandle, companyName }
+ * - jobData: { id, title, salary, equity, companyHandle, companyName }
  *
  * JobCardList->JobCard
  */
 function JobCard({ jobData }) {
   console.log("jobData:", jobData);
 
-  return ( //TODO: alla' this!
+  return (
     <div className="JobCard">
-      <h1>Be a real {jobData.title} {
-        jobData.companyName ? `at ${jobData.companyName}` : ""}</h1>
+      <h3>{jobData.title} </h3>
+      {jobData.companyName?.length && <h4>{jobData.companyName}</h4>}
+      <div className="JobCard-details">
+        <p>Salary: {jobData.salary}</p>
+        <p>Equity: {jobData.equity || "Not Listed"}</p>
+      </div>
     </div>
   );
 }

@@ -24,9 +24,10 @@ function CompanyDetail() {
     return <h1>Loading...</h1>;
   }
 
-  return ( //TODO: this for real
+  return (
     <div className="CompanyDetail">
-      <h1>Info for {company.name}</h1>
+      <h1>{company.name}</h1>
+      <h3>{company.description}</h3>
       <JobCardList jobs={company.jobs} />
     </div>
   );

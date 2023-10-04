@@ -8,9 +8,16 @@ import { Link } from "react-router-dom";
  * CompanyCardList->CompanyCard
  */
 function CompanyCard({ companyData }) {
-  return ( //TODO: all'a this!
+  return ( //TODO: how did they do that whole-card-is-a-link trick on warbler?? Check their design/CSS
     <Link to={`/companies/${companyData.handle}`}>
-      <h1>Hi, I'm {companyData.name}</h1>
+      <div className="CompanyCard">
+        <h3>{companyData.name}</h3>
+
+        {companyData.logoUrl?.length &&
+          <img src={companyData.logoUrl} alt={`logo for ${companyData.name}`} />}
+
+        <p>{companyData.description}</p>
+      </div>
     </Link>
   );
 }
