@@ -1,22 +1,40 @@
 import { Route, Routes, Navigate } from "react-router-dom";
-import CompanyList from "./CompanyList";
-import JobList from "./JobList";
+import CompanyList from "./CompanyComponents/CompanyList";
+import JobList from "./JobComponents/JobList";
 import Homepage from "./Homepage";
-import CompanyDetail from "./CompanyDetail";
+import CompanyDetail from "./CompanyComponents/CompanyDetail";
+import UserProfile from "./UserComponents/UserProfile";
+import LoginForm from "./AuthComponents/LoginForm";
+import SignupForm from "./AuthComponents/SignupForm";
 
 
 /** RoutesList
  *
+ * props:
+ * - isLoggedIn: boolean
+ *
  * App->RoutesList->Routes
  */
-function RoutesList() {
+function RoutesList({ isLoggedIn }) {
 
   return (
     <Routes>
       <Route path="/" element={<Homepage />} />
-      <Route path="/jobs" element={<JobList />} />
-      <Route path="/companies" element={<CompanyList />} />
-      <Route path="/companies/:handle" element={<CompanyDetail />} />
+      {
+        isLoggedIn
+          ?
+          <>
+            <Route path="/profile" element={<UserProfile />} />
+            <Route path="/jobs" element={<JobList />} />
+            <Route path="/companies" element={<CompanyList />} />
+            <Route path="/companies/:handle" element={<CompanyDetail />} />
+          </>
+          :
+          <>
+            <Route path="/login" element={<LoginForm />} />
+            <Route path="/signup" element={<SignupForm />} />
+          </>
+      }
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   ); //TODO: bespoke 404/NotFound page??

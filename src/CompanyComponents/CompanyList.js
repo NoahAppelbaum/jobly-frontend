@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import JoblyApi from "./api";
+import JoblyApi from "../api";
 import CompanyCardList from "./CompanyCardList";
-import SearchForm from "./SearchForm";
+import SearchForm from "../SearchForm";
 
 
 /** CompanyList: logical parent component for listing companies

@@ -70,6 +70,11 @@ class JoblyApi {
     let res = await this.request("jobs", filters);
     return res.jobs;
   }
+
+  /******************************** Auth Routes */
+
+
+  /******************************** User Routes */
 }
 
 export default JoblyApi;
