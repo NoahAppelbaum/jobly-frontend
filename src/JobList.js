@@ -18,11 +18,11 @@ function JobList() {
 
   //fetch jobs on render and updated filters
   useEffect(() => {
-    async function getJobs() {
-      const jobsData = await JoblyApi.getAllJobs(filters);
+    async function getJobsFromBackend() {
+      const jobsData = await JoblyApi.getJobs(filters);
       setJobs(jobsData);
     }
-    getJobs();
+    getJobsFromBackend();
   }, [filters]);
 
   //callback for Jobs SearchForm

@@ -56,8 +56,8 @@ class JoblyApi {
   }
 
   /** Get information on all companies, filterable */
-  //TODO: Change name -- getCompanies
-  static async getAllCompanies(filters = {}) {
+
+  static async getCompanies(filters = {}) {
     let res = await this.request("companies", filters);
     return res.companies;
   }
@@ -66,7 +66,7 @@ class JoblyApi {
 
   /** Get information on all jobs, filterable */
 
-  static async getAllJobs(filters = {}) {
+  static async getJobs(filters = {}) {
     let res = await this.request("jobs", filters);
     return res.jobs;
   }

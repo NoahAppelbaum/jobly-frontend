@@ -18,11 +18,11 @@ function CompanyList() {
 
   //fetch companies on render and updated filters
   useEffect(() => { //will need to change this callback name when changing model fn
-    async function getCompanies() {
-      const companiesData = await JoblyApi.getAllCompanies(filters);
+    async function getCompaniesFromBackend() {
+      const companiesData = await JoblyApi.getCompanies(filters);
       setCompanies(companiesData);
     }
-    getCompanies();
+    getCompaniesFromBackend();
   }, [filters]);
 
   //callback for Companies SearchForm

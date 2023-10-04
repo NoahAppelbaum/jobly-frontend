@@ -3,29 +3,25 @@ import { useState } from "react";
 /** SearchForm: searchbar for specified page
  *
  * state:
- * - formData
+ * - searchField: (string) value of search text field
  *
  * props:
  * - searchFunction: callback
  *
  * { CompanyList, JobList }->SearchForm
  */
-//TODO: simplify
 function SearchForm({ searchFunction, placeholder = "" }) {
-  const [formData, setFormData] = useState({ search: "" });
+  const [searchField, setSearchField] = useState("");
 
   function handleChange(evt) {
-    const { name, value } = evt.target;
-    setFormData(curr => ({
-      ...curr,
-      [name]: value
-    }));
+    const { value } = evt.target;
+    setSearchField(value);
   }
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    searchFunction(formData.search);
-    setFormData({ search: "" });
+    searchFunction(searchField);
+    setSearchField("");
   }
 
   return (
@@ -35,7 +31,7 @@ function SearchForm({ searchFunction, placeholder = "" }) {
           id="search"
           name="search"
           onChange={handleChange}
-          value={formData.search}
+          value={searchField}
           placeholder={`search ${placeholder}`} />
         <button>Search</button>
       </form>
