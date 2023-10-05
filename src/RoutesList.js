@@ -12,10 +12,11 @@ import SignupForm from "./AuthComponents/SignupForm";
  *
  * props:
  * - isLoggedIn: boolean
+ * - callbacks: { fn, ... }
  *
  * App->RoutesList->Routes
  */
-function RoutesList({ isLoggedIn }) {
+function RoutesList({ isLoggedIn, callbacks }) {
 
   return (
     <Routes>
@@ -31,8 +32,14 @@ function RoutesList({ isLoggedIn }) {
           </>
           :
           <>
-            <Route path="/login" element={<LoginForm />} />
-            <Route path="/signup" element={<SignupForm />} />
+            <Route
+              path="/login"
+              element={<LoginForm login={callbacks.login} />}
+            />
+            <Route
+              path="/signup"
+              element={<SignupForm signup={callbacks.signup} />}
+            />
           </>
       }
       <Route path="*" element={<Navigate to="/" />} />

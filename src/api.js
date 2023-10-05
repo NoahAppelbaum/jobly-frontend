@@ -71,10 +71,33 @@ class JoblyApi {
     return res.jobs;
   }
 
+  //TODO: Apply
+
   /******************************** Auth Routes */
 
+  /** Attempts to log in a user
+   * Accepts { username, password }
+   * returns { token } or { errors }
+   */
+
+  static async login(loginDetails) {
+    let res = await this.request("auth/token", loginDetails, "POST");
+    return res;
+  }
+
+  /** Register a new user
+   * Accepts { username, password, firstName, lastName, email }
+   * returns { token } or { errors }
+   */
+
+  static async register(user) {
+    let res = await this.request("auth/register", user, "POST");
+    return res;
+  }
 
   /******************************** User Routes */
+
+  //TODO: update
 }
 
 export default JoblyApi;
