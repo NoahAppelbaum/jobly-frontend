@@ -1,5 +1,4 @@
-import { useContext, useState } from "react"; //TODO: no context, just access to local storage?
-import userContext from "../userContext";
+import { useContext, useState } from "react";
 import ErrorAlert from "../ErrorAlert";
 
 const initialState = {
@@ -30,14 +29,14 @@ function LoginForm({ login }) {
     }));
   }
 
-  //TODO: isLoading state for this?
   async function handleSubmit(evt) {
     console.log("Submitting Login Request");
     evt.preventDefault();
-    //try to log in -- get errors back if it fails
-    //TODO: put try/catch HERE -- this is where we need them
-    const newErrors = await login(formData);
-    setErrors(newErrors);
+    try {
+      await login(formData);
+    } catch (err) {
+      setErrors(err);
+    }
     setFormData(initialState);
   }
 

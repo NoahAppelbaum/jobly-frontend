@@ -5,11 +5,11 @@ import "./stylesheets/Nav.css"
  *
  * props:
  * - user: { user info }
- * - callbacks: { fn, ... }
+ * - logout: callback
  *
  * JoblyApp->Nav
- */ //TODO: pass this the actual callback it needs?
-function Nav({ user, callbacks }) {
+ */
+function Nav({ user, logout }) {
   return (
     <div className="Nav">
       <NavLink to={"/"}>Jobly</NavLink>
@@ -20,7 +20,7 @@ function Nav({ user, callbacks }) {
             <NavLink to={"/companies"}>Companies</NavLink>
             <NavLink to={"/jobs"}>Jobs</NavLink>
             <NavLink to={"/profile"}>Profile</NavLink>
-            <Link onClick={callbacks.logout} to={"/"}>Log Out {user.username}</Link>
+            <Link onClick={logout} to={"/"}>Log Out {user.username}</Link>
           </>
           :
           <>

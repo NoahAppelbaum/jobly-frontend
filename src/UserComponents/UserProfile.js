@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import userContext from "../userContext";
+import userContext from "../Contexts/userContext";
 //TODO: THIS
 function UserProfile() {
 

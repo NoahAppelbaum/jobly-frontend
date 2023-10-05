@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import userContext from "../userContext";
+import userContext from "../Contexts/userContext";
 import ErrorAlert from "../ErrorAlert";
 
 
@@ -35,13 +35,14 @@ function SignupForm({ signup }) {
     }));
   }
 
-  //TODO: isLoading state for this?
   async function handleSubmit(evt) {
     console.log("Submitting Register Request");
     evt.preventDefault();
-    //try to sign up -- get errors back if it fails
-    const newErrors = await signup(formData);
-    setErrors(newErrors);
+    try {
+      await signup(formData);
+    } catch (err) {
+      setErrors(err);
+    }
     setFormData(curr => ({ ...curr, username: "", password: "" }));
   }
 
