@@ -1,7 +1,6 @@
 import { useContext, useState } from "react"; //TODO: no context, just access to local storage?
 import userContext from "../userContext";
 import ErrorAlert from "../ErrorAlert";
-import JoblyApi from "../api";
 
 const initialState = {
   username: "",
@@ -36,6 +35,7 @@ function LoginForm({ login }) {
     console.log("Submitting Login Request");
     evt.preventDefault();
     //try to log in -- get errors back if it fails
+    //TODO: put try/catch HERE -- this is where we need them
     const newErrors = await login(formData);
     setErrors(newErrors);
     setFormData(initialState);

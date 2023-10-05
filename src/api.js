@@ -12,9 +12,11 @@ class JoblyApi {
   // Remember, the backend needs to be authorized with a token
   // We're providing a token you can use to interact with the backend API
   // DON'T MODIFY THIS TOKEN
-  static token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-    "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-    "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+  // static token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
+  //   "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
+  //   "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+
+  static token = "";
 
   static async request(endpoint, data = {}, method = "GET") {
     const url = new URL(`${BASE_URL}/${endpoint}`);
@@ -71,8 +73,6 @@ class JoblyApi {
     return res.jobs;
   }
 
-  //TODO: Apply
-
   /******************************** Auth Routes */
 
   /** Attempts to log in a user
@@ -97,7 +97,20 @@ class JoblyApi {
 
   /******************************** User Routes */
 
-  //TODO: update
+  /** gets user data
+   * Accepts (string) username
+   * returns { username, firstName, lastName, isAdmin, jobs }
+   *    where jobs is { id, title, companyHandle, companyName, state }
+   */
+
+  static async getUser(username) {
+    let res = await this.request(`users/${username}`);
+    return res;
+  }
+
+  //TODO: update()
+
+  //TODO: apply()
 }
 
 export default JoblyApi;

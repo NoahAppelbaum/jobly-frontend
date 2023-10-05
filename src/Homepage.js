@@ -1,6 +1,7 @@
 import userContext from "./userContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import "./stylesheets/homepage.css"
 
 /** Hompage: renders simple homepage */
 function Homepage() {
@@ -14,11 +15,11 @@ function Homepage() {
         !!user
           ?
           <>
-            {/*TODO: Maybe should be first name here: */}
-            <p>Your future is waiting, {user.username}</p>
+            <p>Your future is waiting, {user.firstName}</p>
           </>
           :
           <>
+            <h3>The future is job!</h3>
             <span>
               <button onClick={() => navigate("/login")}>Log In</button>
               <button onClick={() => navigate("/signup")}>Sign Up</button>

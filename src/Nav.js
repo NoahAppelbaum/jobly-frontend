@@ -1,16 +1,15 @@
 import { NavLink, Link } from "react-router-dom";
+import "./stylesheets/Nav.css"
 
 /** Nav: Nav bar
  *
  * props:
- * - user: { TODO: deets }
+ * - user: { user info }
  * - callbacks: { fn, ... }
  *
  * JoblyApp->Nav
- */
+ */ //TODO: pass this the actual callback it needs?
 function Nav({ user, callbacks }) {
-
-
   return (
     <div className="Nav">
       <NavLink to={"/"}>Jobly</NavLink>

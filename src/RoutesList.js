@@ -18,6 +18,8 @@ import SignupForm from "./AuthComponents/SignupForm";
  */
 function RoutesList({ isLoggedIn, callbacks }) {
 
+  console.log("RoutesList isLoggedIn:", isLoggedIn);
+
   return (
     <Routes>
       <Route path="/" element={<Homepage />} />
@@ -45,6 +47,7 @@ function RoutesList({ isLoggedIn, callbacks }) {
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   ); //TODO: bespoke 404/NotFound page??
+  //    -- if I do this, form callbacks need to navigate back home
 
 }
 
