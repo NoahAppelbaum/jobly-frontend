@@ -1,4 +1,5 @@
 import ApplyButton from "./ApplyButton";
+import "../stylesheets/JobCard.css"
 
 /** JobCard: displays Job information
  *

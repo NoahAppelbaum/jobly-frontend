@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import JoblyApi from "../api";
 import CompanyCardList from "./CompanyCardList";
-import SearchForm from "../SearchForm";
+import SearchForm from "../SearchBar";
+import "../stylesheets/CompanyList.css"
 
 
 /** CompanyList: logical parent component for listing companies
@@ -36,7 +37,9 @@ function CompanyList() {
 
   return (
     <div className="CompanyList">
+
       <SearchForm searchFunction={searchCompanies} placeholder="companies" />
+      <h3 className="CompanyList-announcement">Click a company to see their available jobs!</h3>
       <CompanyCardList companies={companies} />
     </div>
   );

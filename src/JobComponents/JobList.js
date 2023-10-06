@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import JoblyApi from "../api";
 import JobCardList from "./JobCardList";
-import SearchForm from "../SearchForm";
+import SearchForm from "../SearchBar";
 
 
 /** JobList: logical parent component for listing jobs

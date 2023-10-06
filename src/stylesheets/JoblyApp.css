@@ -1,11 +1,19 @@
-form {
-  background-color: white;
+body {
+  background-image: url("../../public/joblybackground.png");
+  background-attachment: fixed;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-form button {
+button {
   background-color: lightblue;
   border: none;
   border-radius: 5px;
   color: white;
   font-size: large;
+}
+
+label {
+  font: 1rem sans-serif;
 }

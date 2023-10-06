@@ -1,6 +1,7 @@
 import { useState } from "react";
+import "./stylesheets/SearchBar.css";
 
-/** SearchForm: searchbar for specified page
+/** SearchBar: searchbar for specified page
  *
  * state:
  * - searchField: (string) value of search text field
@@ -8,9 +9,9 @@ import { useState } from "react";
  * props:
  * - searchFunction: callback
  *
- * { CompanyList, JobList }->SearchForm
+ * { CompanyList, JobList }->SearchBar
  */
-function SearchForm({ searchFunction, placeholder = "" }) {
+function SearchBar({ searchFunction, placeholder = "" }) {
   const [searchField, setSearchField] = useState("");
 
   function handleChange(evt) {
@@ -25,7 +26,7 @@ function SearchForm({ searchFunction, placeholder = "" }) {
   }
 
   return (
-    <div className="SearchForm">
+    <div className="SearchBar">
       <form onSubmit={handleSubmit}>
         <input
           id="search"
@@ -40,4 +41,4 @@ function SearchForm({ searchFunction, placeholder = "" }) {
 
 }
 
-export default SearchForm;
+export default SearchBar;

@@ -2,6 +2,7 @@ import ErrorAlert from "../ErrorAlert";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import userContext from "../Contexts/userContext";
+import "../stylesheets/UserProfile.css"
 
 /** UserProfile: Displays user information/form to edit
  *
@@ -44,16 +45,17 @@ function UserProfile({ update }) {
 
   return (
     <div className="UserProfile">
-      <h1>Profile</h1>
+      <h1>{user.username}</h1>
       <form onSubmit={handleSubmit}>
-        <h2>{user.username}</h2>
+        <div className="UserProfile-inputs">
+
         <label htmlFor="firstName">First Name</label>
         <input
           id="firstName"
           name="firstName"
           onChange={handleChange}
           value={formData.firstName}
-        />
+          />
 
         <label htmlFor="lastName">Last Name</label>
         <input
@@ -61,7 +63,7 @@ function UserProfile({ update }) {
           name="lastName"
           onChange={handleChange}
           value={formData.lastName}
-        />
+          />
 
         <label htmlFor="email">Email</label>
         <input
@@ -70,7 +72,8 @@ function UserProfile({ update }) {
           onChange={handleChange}
           value={formData.email}
           type="email"
-        />
+          />
+        </div>
 
         <button>Save Changes</button>
       </form>

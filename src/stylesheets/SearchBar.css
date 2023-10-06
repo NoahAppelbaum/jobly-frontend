@@ -1,0 +1,17 @@
+.SearchBar {
+  margin: 10px auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.SearchBar input {
+  width: 270px;
+  height: 25px;
+  border-radius: 5px;
+  font-size: large;
+  margin-right: 3px;
+}
+
+.SearchBar button {
+  height: 25px;
+}

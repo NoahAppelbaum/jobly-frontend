@@ -15,17 +15,19 @@ function Homepage() {
         !!user
           ?
           <>
-            <p>Your future is waiting, {user.firstName}</p>
+            <h2>Your future is waiting, {user.firstName}!</h2>
           </>
           :
           <>
-            <h3>The future is job!</h3>
+            <h3>See who's hiring, get the job details you need, and apply for jobs!</h3>
             <span>
               <button onClick={() => navigate("/login")}>Log In</button>
               <button onClick={() => navigate("/signup")}>Sign Up</button>
             </span>
           </>
       }
+
+      <p className="Homepage-flavor-text">At Jobly, we believe every job application is a new opportunity for your future! But the <b>most important</b> job application is always the one you may or may not currently be fielding from me, Noah Appelbaum.</p>
     </div>
   );
 

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "../stylesheets/CompanyCard.css"
 
 /** CompanyCard: displays company information, links to CompanyDetail
  *
@@ -9,12 +10,12 @@ import { Link } from "react-router-dom";
  */
 function CompanyCard({ companyData }) {
   return ( //TODO: how did they do that whole-card-is-a-link trick on warbler?? Check their design/CSS
-    <Link to={`/companies/${companyData.handle}`}>
+    <Link className="CompanyCard-link" to={`/companies/${companyData.handle}`}>
       <div className="CompanyCard">
         <h3>{companyData.name}</h3>
 
         {companyData.logoUrl?.length &&
-          <img src={companyData.logoUrl} alt={`logo for ${companyData.name}`} />}
+          <img width={40} src={companyData.logoUrl} alt={`logo for ${companyData.name}`} />}
 
         <p>{companyData.description}</p>
       </div>

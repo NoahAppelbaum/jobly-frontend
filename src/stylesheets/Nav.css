@@ -1,12 +1,27 @@
 .Nav {
-  height: 2rem;
-  background-color: orange;
+  position: sticky;
+  top: 0;
+  height: 40px;
+  z-index: 3;
+  background-color: white;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.Nav-pagelinks {
+  display: flex;
 }
 
 .Nav a {
-  margin: 5px;
+  margin: auto 10px;
+  color: black;
 }
 
 .Nav a.active {
-  color: blueviolet;
+  font-weight: bold;
+}
+
+.Nav a:link {
+  text-decoration: none;
 }

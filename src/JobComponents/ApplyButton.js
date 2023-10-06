@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import userContext from "../Contexts/userContext";
 import JoblyApi from "../api";
+import "../stylesheets/ApplyButton.css"
 
 
 /** ApplyButton: triggers job application process

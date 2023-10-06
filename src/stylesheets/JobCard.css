@@ -1,0 +1,12 @@
+.JobCard {
+  position: relative;
+
+  background-color: aliceblue;
+  width: 400px;
+  height: 100px;
+  margin: 0 auto;
+
+  color: black;
+
+  pointer-events: none;
+}

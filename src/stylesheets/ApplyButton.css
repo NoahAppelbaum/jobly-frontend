@@ -1,0 +1,13 @@
+.ApplyButton {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  background-color: orange;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.ApplyButton:disabled {
+  cursor: auto;
+  background-color: lightsalmon;
+}
