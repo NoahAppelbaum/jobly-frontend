@@ -67,6 +67,7 @@ function JoblyApp() {
   async function update(formData) {
     const updatedUser =
       await JoblyApi.updateUser(currentUser.username, formData);
+    updatedUser.applications = currentUser.applications;
     setCurrentUser(updatedUser);
   }
   //TODO: move these^^^ all into utils and import `(* as callbacks)` up top?
