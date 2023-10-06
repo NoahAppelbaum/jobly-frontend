@@ -17,63 +17,69 @@ import JoblyApi from "./api";
  * App->JoblyApp->{ Nav, RoutesList, Loading }
  */
 function JoblyApp() {
+  //Set token to localStorage value/lack thereof
+  const [token, setToken] = useState(localStorage.getItem("token"));
   const [currentUser, setCurrentUser] = useState(null);
-  const [token, setToken] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-  //TODO: useEffect on render to check localstorage for token/user?
-  //    (or "useLocalStorage" hook)
-
+  //When a token changes -- we log in, or we log out:
+  //If there's a token, get the currentUser from the API and set state
+  //Update the token on JoblyApi
   useEffect(() => {
     async function getUserFromToken(newToken) {
       const { username } = decode(newToken);
-      const response = await JoblyApi.getUser(username);
-      setCurrentUser(response.user);
+      try {
+        const response = await JoblyApi.getUser(username);
+        localStorage.setItem("token", token);
+        setCurrentUser(response.user);
+      } catch (err) {
+      //TODO: State for errors? Render ErrorAlert below Nav?
+      }
+      //load page, now that we have a user
+      setIsLoading(false);
     }
+
     JoblyApi.token = token || "";
     if (token) {
-      try {
-        getUserFromToken(token);
-      } catch (err) {
-        //TODO: State for errors? Render ErrorAlert below Nav?
-      }
+      getUserFromToken(token);
     } else {
-      setCurrentUser(null);
+      setIsLoading(false);
     }
   }, [token]);
 
   async function login(formData) {
-    setIsLoading(true);
-    const response = await JoblyApi.login(formData);
-    console.log("Got back:", response);
-    setToken(response.token);
-    setIsLoading(false); //FIXME: Oh no, I don't get here if there are errors!
-    <Navigate to={"/"} />; // -- Does loading need to be in context!? to reset on err catch?
-  };
+    const newToken = await JoblyApi.login(formData);
+    setToken(newToken);
+  }
 
   async function signup(formData) {
-    setIsLoading(true);
-    const response = await JoblyApi.register(formData);
-    console.log("Got back:", response);
-    setToken(response.token);
-    setIsLoading(false);
-    <Navigate to={"/"} />;
+    const newToken = await JoblyApi.register(formData);
+    setToken(newToken);
   };
 
   function logout() {
     console.log("LOGGING OUT");
     setToken(null);
+    setCurrentUser(null);
+    localStorage.removeItem("token");
   };
+
+  async function update(formData) {
+    const updatedUser =
+      await JoblyApi.updateUser(currentUser.username, formData);
+    setCurrentUser(updatedUser);
+  }
   //TODO: move these^^^ all into utils and import `(* as callbacks)` up top?
   // Q: can I pass/export setToken to a util module?
   //    ...And then import that module here?
-  const callbacks = { login, signup, logout };
+  const callbacks = { login, signup, logout, update };
 
   if (isLoading) {
+    console.log("LOADING");
     return <Loading />;
   }
 
-  return (//FIXME: add loading context w/ setIsLoading provider, consume in login/signup
+  return (
     <>
       <userContext.Provider value={{ user: currentUser }}>
         <BrowserRouter>

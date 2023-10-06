@@ -17,9 +17,6 @@ import SignupForm from "./AuthComponents/SignupForm";
  * App->RoutesList->Routes
  */
 function RoutesList({ isLoggedIn, callbacks }) {
-
-  console.log("RoutesList isLoggedIn:", isLoggedIn);
-
   return (
     <Routes>
       <Route path="/" element={<Homepage />} />
@@ -27,7 +24,7 @@ function RoutesList({ isLoggedIn, callbacks }) {
         isLoggedIn
           ?
           <>
-            <Route path="/profile" element={<UserProfile />} />
+            <Route path="/profile" element={<UserProfile update={callbacks.update} />} />
             <Route path="/jobs" element={<JobList />} />
             <Route path="/companies" element={<CompanyList />} />
             <Route path="/companies/:handle" element={<CompanyDetail />} />

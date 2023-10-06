@@ -77,22 +77,22 @@ class JoblyApi {
 
   /** Attempts to log in a user
    * Accepts { username, password }
-   * returns { token } or { errors }
+   * returns JWT token or { errors }
    */
 
   static async login(loginDetails) {
     let res = await this.request("auth/token", loginDetails, "POST");
-    return res;
+    return res.token;
   }
 
   /** Register a new user
    * Accepts { username, password, firstName, lastName, email }
-   * returns { token } or { errors }
+   * returns JWT or { errors }
    */
 
   static async register(user) {
     let res = await this.request("auth/register", user, "POST");
-    return res;
+    return res.token;
   }
 
   /******************************** User Routes */
@@ -108,9 +108,23 @@ class JoblyApi {
     return res;
   }
 
-  //TODO: update()
+  /** updates a user
+   * Accepts (string) username and
+   *  updateData (can include:{ firstName, lastName, password, email })
+   * returns { username, firstName, lastName, email, isAdmin }
+  */
 
-  //TODO: apply()
+  static async updateUser(username, updateData) {
+    let res = await this.request(`users/${username}`, updateData, "PATCH");
+    return res.user;
+  }
+
+  /** makes job application for user, based on jobId */
+
+  static async applyForJob(username, jobId) {
+    let res = await this.request(`users/${username}/jobs/${jobId}`, "POST");
+    return res;
+  }
 }
 
 export default JoblyApi;
