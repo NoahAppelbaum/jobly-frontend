@@ -2,6 +2,8 @@ import { useState, useContext } from "react";
 import userContext from "../Contexts/userContext";
 import JoblyApi from "../api";
 import "../stylesheets/ApplyButton.css"
+import ApplicationForm from "./ApplicationForm";
+import { useNavigate } from "react-router-dom";
 
 
 /** ApplyButton: triggers job application process
@@ -21,6 +23,7 @@ function ApplyButton({ jobId }) {
     user.applications.some(a => a === jobId)
   );
   const [errors, setErrors] = useState(null);
+  const navigate = useNavigate();
 
   async function handleClick() {
     try {
@@ -28,6 +31,7 @@ function ApplyButton({ jobId }) {
       user.applications.push(jobId);
       setApplied(true);
       setErrors(null);
+      navigate("/jobs/apply");
     } catch (err) {
       setErrors(err);
     }

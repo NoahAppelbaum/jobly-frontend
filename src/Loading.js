@@ -1,3 +1,4 @@
+import "./stylesheets/Loading.css"
 
 /** Loading: loading page
  *

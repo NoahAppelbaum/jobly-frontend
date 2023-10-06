@@ -6,6 +6,7 @@ import CompanyDetail from "./CompanyComponents/CompanyDetail";
 import UserProfile from "./UserComponents/UserProfile";
 import LoginForm from "./AuthComponents/LoginForm";
 import SignupForm from "./AuthComponents/SignupForm";
+import ApplicationForm from "./JobComponents/ApplicationForm";
 
 
 /** RoutesList
@@ -28,6 +29,8 @@ function RoutesList({ isLoggedIn, callbacks }) {
             <Route path="/jobs" element={<JobList />} />
             <Route path="/companies" element={<CompanyList />} />
             <Route path="/companies/:handle" element={<CompanyDetail />} />
+            <Route path="/jobs/apply" element={<ApplicationForm />} />
+            {/* TODO: application form joke */}
           </>
           :
           <>
