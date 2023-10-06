@@ -6,6 +6,7 @@ import RoutesList from "./RoutesList";
 import Nav from "./Nav";
 import Loading from "./Loading";
 import JoblyApi from "./api";
+import "./stylesheets/JoblyApp.css"
 
 /** JoblyApp: parent app component
  *

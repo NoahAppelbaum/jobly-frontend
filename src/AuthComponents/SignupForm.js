@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ErrorAlert from "../ErrorAlert";
+import "../stylesheets/SignupForm.css";
 
 
 const initialState = {
@@ -51,42 +52,45 @@ function SignupForm({ signup }) {
       <h1>Find Your Future!</h1>
 
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
-        <input
-          id="username"
-          name="username"
-          onChange={handleChange}
-          value={formData.username} />
 
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          onChange={handleChange}
-          value={formData.password} />
+        <div className="SignupForm-inputs">
+          <label htmlFor="username">Username</label>
+          <input
+            id="username"
+            name="username"
+            onChange={handleChange}
+            value={formData.username} />
 
-        <label htmlFor="firstName">First Name</label>
-        <input
-          id="firstName"
-          name="firstName"
-          onChange={handleChange}
-          value={formData.firstName} />
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            onChange={handleChange}
+            value={formData.password} />
 
-        <label htmlFor="lastName">Last Name</label>
-        <input
-          id="lastName"
-          name="lastName"
-          onChange={handleChange}
-          value={formData.lastName} />
+          <label htmlFor="firstName">First Name</label>
+          <input
+            id="firstName"
+            name="firstName"
+            onChange={handleChange}
+            value={formData.firstName} />
 
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          onChange={handleChange}
-          value={formData.email} />
+          <label htmlFor="lastName">Last Name</label>
+          <input
+            id="lastName"
+            name="lastName"
+            onChange={handleChange}
+            value={formData.lastName} />
+
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            onChange={handleChange}
+            value={formData.email} />
+        </div>
 
         <button>Sign Up</button>
       </form>

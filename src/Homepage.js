@@ -1,7 +1,7 @@
 import userContext from "./Contexts/userContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import "./stylesheets/homepage.css"
+import "./stylesheets/Homepage.css"
 
 /** Hompage: renders simple homepage */
 function Homepage() {

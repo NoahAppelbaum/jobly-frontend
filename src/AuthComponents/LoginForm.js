@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ErrorAlert from "../ErrorAlert";
+import "../stylesheets/LoginForm.css"
 
 const initialState = {
   username: "",
@@ -45,6 +46,7 @@ function LoginForm({ login }) {
       <h1>Log In</h1>
 
       <form onSubmit={handleSubmit}>
+        <div className="LoginForm-inputs">
         <label htmlFor="username">Username</label>
         <input
           id="username"
@@ -60,7 +62,10 @@ function LoginForm({ login }) {
           onChange={handleChange}
           value={formData.password} />
 
-        <button>Log In</button>
+        </div>
+
+
+        <button>Log In!</button>
       </form>
       {!!errors && <ErrorAlert errors={errors} />}
     </div>

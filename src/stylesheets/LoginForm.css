@@ -1,0 +1,31 @@
+.LoginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 60%;
+  margin: 40px auto;
+  padding: 20px 20px 40px;
+}
+
+.LoginForm-inputs {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.LoginForm input {
+  margin-bottom: 10px;
+}
+
+.LoginForm label {
+  margin-right: 5px;
+}
+
+.LoginForm button {
+  width: 200px;
+  height: 32px;
+  margin: 10px auto;
+  transform: translateX(40%);
+}
