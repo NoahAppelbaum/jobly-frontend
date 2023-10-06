@@ -28,8 +28,8 @@ function JoblyApp() {
   //Update the token on JoblyApi
   useEffect(() => {
     async function getUserFromToken(newToken) {
-      const { username } = decode(newToken);
       try {
+        const { username } = decode(newToken);
         const response = await JoblyApi.getUser(username);
         localStorage.setItem("token", token);
         setCurrentUser(response.user);
@@ -77,7 +77,6 @@ function JoblyApp() {
   const callbacks = { login, signup, logout, update };
 
   if (isLoading) {
-    console.log("LOADING");
     return <Loading />;
   }
 

@@ -1,4 +1,5 @@
 import ErrorAlert from "../ErrorAlert";
+import Loading from "../Loading";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import userContext from "../Contexts/userContext";
@@ -9,6 +10,7 @@ import "../stylesheets/UserProfile.css"
  * state:
  * - formData: {inputField, ...}
  * - errors: [err, ...]
+ * - isLoading: boolean
  *
  * props:
  * - update: callback
@@ -23,16 +25,19 @@ function UserProfile({ update }) {
     email: user.email
   });
   const [errors, setErrors] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   async function handleSubmit(evt) {
     evt.preventDefault();
+    setIsLoading(true);
     try {
       await update(formData);
       navigate("/");
     } catch (err) {
       setErrors(err);
     }
+    setIsLoading(false);
   }
 
   function handleChange(evt) {

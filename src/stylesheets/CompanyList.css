@@ -1,4 +1,6 @@
-.CompanyList-announcement {
+.CompanyList {
   color: white;
+}
+.CompanyList-announcement {
   text-align: center;
 }

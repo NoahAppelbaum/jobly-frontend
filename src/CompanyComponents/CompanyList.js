@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import JoblyApi from "../api";
 import CompanyCardList from "./CompanyCardList";
 import SearchForm from "../SearchBar";
+import Loading from "../Loading";
 import "../stylesheets/CompanyList.css"
 
 
@@ -32,12 +33,12 @@ function CompanyList() {
   }
 
   if (!companies) {
-    return <h1>Loading...</h1>;
+    return <Loading />;
   }
 
   return (
     <div className="CompanyList">
-
+      <h1>Companies</h1>
       <SearchForm searchFunction={searchCompanies} placeholder="companies" />
       <h3 className="CompanyList-announcement">Click a company to see their available jobs!</h3>
       <CompanyCardList companies={companies} />

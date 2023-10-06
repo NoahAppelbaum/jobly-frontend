@@ -2,6 +2,7 @@ import JoblyApi from "../api";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import JobCardList from "../JobComponents/JobCardList";
+import "../stylesheets/CompanyDetail.css";
 
 /** CompanyDetail: displays jobs listed by specified company
  *

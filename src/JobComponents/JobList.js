@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import JoblyApi from "../api";
 import JobCardList from "./JobCardList";
 import SearchForm from "../SearchBar";
+import Loading from "../Loading";
+import "../stylesheets/JobList.css"
 
 
 /** JobList: logical parent component for listing jobs
@@ -31,11 +33,12 @@ function JobList() {
   }
 
   if (!jobs) {
-    return <h1>Loading...</h1>;
+    return <Loading />;
   }
 
   return (
     <div className="JobList">
+      <h1>Jobs</h1>
       <SearchForm searchFunction={searchJobs} placeholder="jobs" />
       <JobCardList jobs={jobs} />
     </div>

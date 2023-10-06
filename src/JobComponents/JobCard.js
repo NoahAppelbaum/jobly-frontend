@@ -9,8 +9,6 @@ import "../stylesheets/JobCard.css"
  * JobCardList->JobCard->ApplyButton
  */
 function JobCard({ jobData }) {
-  console.log("jobData:", jobData);
-
   return (
     <div className="JobCard">
       <h3>{jobData.title} </h3>
