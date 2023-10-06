@@ -31,7 +31,7 @@ function ApplyButton({ jobId }) {
       user.applications.push(jobId);
       setApplied(true);
       setErrors(null);
-      navigate("/jobs/apply");
+      navigate("/jobs/apply"); //TODO: application form joke
     } catch (err) {
       setErrors(err);
     }
