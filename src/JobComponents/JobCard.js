@@ -1,9 +1,11 @@
+import ApplyButton from "./ApplyButton";
+
 /** JobCard: displays Job information
  *
  * props:
  * - jobData: { id, title, salary, equity, companyHandle, companyName }
  *
- * JobCardList->JobCard
+ * JobCardList->JobCard->ApplyButton
  */
 function JobCard({ jobData }) {
   console.log("jobData:", jobData);
@@ -16,6 +18,7 @@ function JobCard({ jobData }) {
         <p>Salary: {jobData.salary}</p>
         <p>Equity: {jobData.equity || "Not Listed"}</p>
       </div>
+      <ApplyButton jobId={jobData.id} />
     </div>
   );
 }

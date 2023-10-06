@@ -70,9 +70,9 @@ function JoblyApp() {
     updatedUser.applications = currentUser.applications;
     setCurrentUser(updatedUser);
   }
-  //TODO: move these^^^ all into utils and import `(* as callbacks)` up top?
-  // Q: can I pass/export setToken to a util module?
-  //    ...And then import that module here?
+
+  //TODO: move these^^^ to custom hook
+
   const callbacks = { login, signup, logout, update };
 
   if (isLoading) {
