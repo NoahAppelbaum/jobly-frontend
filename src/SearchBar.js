@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useCallback } from "react";
+import _ from "lodash";
 import "./stylesheets/SearchBar.css";
 
 /** SearchBar: searchbar for specified page
@@ -12,29 +13,22 @@ import "./stylesheets/SearchBar.css";
  * { CompanyList, JobList }->SearchBar
  */
 function SearchBar({ searchFunction, placeholder = "" }) {
-  const [searchField, setSearchField] = useState("");
+
+  const debouncedSearch = useCallback(_.debounce(searchFunction, 400), []);
 
   function handleChange(evt) {
-    const { value } = evt.target;
-    setSearchField(value);
-  }
 
-  function handleSubmit(evt) {
-    evt.preventDefault();
-    searchFunction(searchField);
-    setSearchField("");
+    debouncedSearch(evt.target.value);
   }
 
   return (
     <div className="SearchBar">
-      <form onSubmit={handleSubmit}>
+      <form>
         <input
           id="search"
           name="search"
           onChange={handleChange}
-          value={searchField}
           placeholder={`search ${placeholder}`} />
-        <button>Search</button>
       </form>
     </div>
   );

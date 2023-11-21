@@ -29,7 +29,16 @@ function CompanyList() {
 
   //callback for Companies SearchForm
   function searchCompanies(searchText) {
-    setFilters(curr => ({ ...curr, nameLike: searchText }));
+    console.log("running searchCompanies. searchText:", searchText)
+    if(searchText){
+      setFilters(curr => ({ ...curr, nameLike: searchText }));
+    } else {
+      setFilters(curr => {
+        const clearSearch = {...curr}
+        delete clearSearch.nameLike;
+        return clearSearch;
+      })
+    }
   }
 
   if (!companies) {
@@ -40,7 +49,11 @@ function CompanyList() {
     <div className="CompanyList">
       <h1>Companies</h1>
       <SearchForm searchFunction={searchCompanies} placeholder="companies" />
-      <h3 className="CompanyList-announcement">Click a company to see their available jobs!</h3>
+      <h3 className="CompanyList-announcement">{
+        companies.length
+        ? "Click a company to see their available jobs!"
+        : "We couldn't find any companies that matched that criteria"
+      }</h3>
       <CompanyCardList companies={companies} />
     </div>
   );

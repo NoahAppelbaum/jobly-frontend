@@ -29,7 +29,15 @@ function JobList() {
 
   //callback for Jobs SearchForm
   function searchJobs(searchText) {
-    setFilters(curr => ({ ...curr, title: searchText }));
+    if (searchText) {
+      setFilters(curr => ({ ...curr, title: searchText }));
+    } else {
+      setFilters(curr => {
+        const clearSearch = { ...curr };
+        delete clearSearch.title;
+        return clearSearch;
+      })
+   }
   }
 
   if (!jobs) {
@@ -40,6 +48,11 @@ function JobList() {
     <div className="JobList">
       <h1>Jobs</h1>
       <SearchForm searchFunction={searchJobs} placeholder="jobs" />
+      <h3 className="JobList-announcement">{
+        jobs.length
+          ? "Your future is waiting!"
+          : "We couldn't find any jobs that matched that criteria"
+      }</h3>
       <JobCardList jobs={jobs} />
     </div>
   );
