@@ -1,8 +1,12 @@
-## About
+# About
 
 This is the frontend for Jobly, a careers website, built in React. It is designed to work with a backend REST API, as can be found in [this repo](https://github.com/NoahAppelbaum/express-jobly). A deployed demo can be found [here](https://na-jobly.surge.sh/).
 
-## Available Scripts
+# Built With
+- JavaScript
+- React
+
+# Getting Started
 
 This project was bootstrapped with Create React App.
 In the project directory, you can run:
@@ -28,4 +32,4 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+You can read more about [deployment](https://facebook.github.io/create-react-app/docs/deployment) on Create React App's repo for more information..
